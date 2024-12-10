@@ -1,22 +1,27 @@
 package agenda;
 
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.Temporal;
+
 
 public class Termination {
 
+
+    private final LocalDate start;
+    private final ChronoUnit frequency;
+    private LocalDate terminationDateInclusive;
+    private long numberOfOccurrences;
     public LocalDate terminationDateInclusive() {
         // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        return terminationDateInclusive;
     }
+
 
     public long numberOfOccurrences() {
         // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        return numberOfOccurrences;
     }
-
-
     /**
      * Constructs a fixed termination event ending at a given date
      * @param start the start time of this event
@@ -31,9 +36,11 @@ public class Termination {
      */
     public Termination(LocalDate start, ChronoUnit frequency, LocalDate terminationInclusive) {
         // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        this.start = start;
+        this.frequency = frequency;
+        this.terminationDateInclusive = terminationInclusive;
+        this.numberOfOccurrences = ChronoUnit.DAYS.between(start, terminationInclusive) / frequency.getDuration().toDays();
     }
-
     /**
      * Constructs a fixed termination event ending after a number of iterations
      * @param start the start time of this event
@@ -47,7 +54,13 @@ public class Termination {
      */
     public Termination(LocalDate start, ChronoUnit frequency, long numberOfOccurrences) {
         // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        this.start = start;
+        this.frequency = frequency;
+        this.numberOfOccurrences = numberOfOccurrences;
+        this.terminationDateInclusive = start.plus(numberOfOccurrences - 1, frequency);
     }
+
+
+
 
 }

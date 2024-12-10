@@ -5,8 +5,14 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Repetition {
+    private final ChronoUnit myFrequency;
+    private final Set<LocalDate> exceptions = new HashSet<>();
+    private Termination termination;
+
     public ChronoUnit getFrequency() {
         return myFrequency;
     }
@@ -19,7 +25,7 @@ public class Repetition {
      * <LI>ChronoUnit.MONTHS for monthly repetitions</LI>
      * </UL>
      */
-    private final ChronoUnit myFrequency;
+
 
     public Repetition(ChronoUnit myFrequency) {
         this.myFrequency = myFrequency;
@@ -31,7 +37,9 @@ public class Repetition {
      */
     public void addException(LocalDate date) {
         // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        //throw new UnsupportedOperationException("Pas encore implémenté");
+        exceptions.add(date);
+
     }
 
     /**
@@ -39,8 +47,11 @@ public class Repetition {
      * @param termination la terminaison de la répétition
      */
     public void setTermination(Termination termination) {
-        // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
-
+        this.termination = termination;
     }
+
 }
+
+
+
+

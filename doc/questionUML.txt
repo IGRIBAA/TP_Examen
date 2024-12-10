@@ -1,2 +1,24 @@
 Ecrire ici votre réponse à la question UML.
 
+
+Ma réponse:
+
+Le premier modèle repose sur une approche orientée composition, où la classe centrale `Event` délègue certaines responsabilités à des objets externes
+ comme `Repetition` et `Termination`. Ce modèle suit le principe de la composition over inheritance, ce qui permet une plus grande flexibilité et une
+ meilleure réutilisabilité du code, en permettant aux différentes fonctionnalités d'être facilement ajoutées ou modifiées indépendamment. Toutefois, cette
+ approche peut mener à un couplage élevé entre les différentes classes, surtout si les objets externes sont fortement dépendants de la classe principale.
+ De plus, la gestion des responsabilités réparties entre plusieurs objets peut ajouter une complexité conceptuelle et rendre le système plus difficile à
+ comprendre dans les premières phases de développement.
+
+Le second modèle, basé sur l'héritage, utilise une hiérarchie de classes pour représenter différents types d’événements, avec des sous-classes spécifiques
+de `Event` pour chaque type particulier d'événement (par exemple, `RepetitiveEvent`, `TerminatedEvent`, etc.). Cette structure permet une modularité claire
+et une extension facile : ajouter un nouveau type d'événement se fait en créant une nouvelle sous-classe sans modifier le code des autres types d'événements.
+Cependant, cette approche peut entraîner plusieurs inconvénients : d'une part, elle peut conduire à une profondeur d'héritage excessive, rendant le modèle
+plus complexe et difficile à maintenir, surtout si de nombreuses classes héritent des comportements d'un même ancêtre. D'autre part, la rigidité du modèle
+basé sur l'héritage peut limiter l'adaptabilité du système en cas d'évolution des besoins métier, car chaque nouvelle fonctionnalité nécessite de modifier ou
+d'étendre la hiérarchie des classes.
+
+En résumé, le choix entre la composition et l'héritage dépend du contexte du projet : l'héritage est approprié pour des systèmes où les types d'événements
+sont bien définis et peu susceptibles d'évoluer, tandis que la composition est préférable pour des systèmes plus dynamiques, où la modularité et
+l'extensibilité sont prioritaires. La composition permet une plus grande souplesse et une meilleure gestion des changements, au prix de possibles interactions
+complexes entre objets.
